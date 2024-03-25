@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+    body {
+        height: 100vh;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        width: 350px;
+        height: 300px;
+        border: 1px solid gray;
+    }
+
+    .cell {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border: 1px solid gray;
+        position: relative;
+    }
+
+    .ant {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row col-2 offset-5 mt-5 position-absolute">
+    <form class="form-inline" action="/challenge2/" method="POST">{% csrf_token %}
+        <div class="input-group">
+            <input name="k" id="k" class="form-control" type="text" placeholder="# of moves">
+            <button class="btn btn-primary" type="submit" onsubmit="">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="container-12 h-75 d-flex">
+    <div class="grid-container mx-auto my-auto" id="grid-container"></div>
+</div>
+
+<script>
+    const data = JSON.parse("{{ data | escapejs }}");
+    console.log(data)
+</script>
+<script src="{% static 'challenge2.js' %}"></script>
+{% endblock %}

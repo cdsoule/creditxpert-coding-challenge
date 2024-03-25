@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+    #shape {
+        position: absolute;
+        cursor: pointer;
+        transition: color 0.5s ease;
+    }
+
+    #zone-one {
+        height: 30%; 
+        width: 30%; 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -999;
+    }
+    #zone-two {
+        height: 50%; 
+        width: 50%; 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -999;
+    }
+    #zone-three {
+        height: 70%; 
+        width: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -999;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-2">
+    <div id="zone-three"></div>
+    <div id="zone-two"></div>
+    <div id="zone-one"></div>
+    <div class="row">
+        <div class="col-3">
+            <label for="shape-select">Shape</label>
+            <select id="shape-select" class="form-select" onchange="setShape()">
+                <option value=""></option>
+                {% for shape in shapes %}
+                    <option value="{{ shape.id }}">{{ shape.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-1 mt-auto pb-1">
+            <div>
+                <div class="shapes " style="font-size: 30px;"></div>
+            </div>
+        </div>
+        <div class="col-2">
+            <label for="color-select">Color scheme</label>
+            <select id="color-select" class="form-select" onchange="setColorScheme()">
+                <option value=""></option>
+                {% for scheme in colors %}
+                    <option value="{{ scheme.id }}">{{ scheme.id }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-6 mt-auto pb-1" style="font-size: 30px;">
+            <div class="fa-solid fa-square colors color1"></div>
+            <div class="fa-solid fa-square colors color2"></div>
+            <div class="fa-solid fa-square colors color3"></div>
+            <div class="fa-solid fa-square colors color4"></div>
+        </div>
+    </div>
+    <div id="shape" class="shapes" style="font-size: 100px; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+</div>
+
+<script src="{% static 'services.js' %}"></script>
+<script src="{% static 'challenge1.js' %}"></script>
+{% endblock %}

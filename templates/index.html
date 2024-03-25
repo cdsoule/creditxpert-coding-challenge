@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6">
+            <a class="card col-8 offset-2  text-decoration-none" href="/challenge1/">
+                <div class="btn-primary card-header bg-primary">Challenge 1</div>
+                <div class="card-body text-secondary">
+                    Create an interface in Python to display a draggable shape in the middle of the screen.  The shape should change color as it moves
+                    from the center to the edge of the screen. 
+                    <br><br>
+                    Allow user to choose the type of shape and a sequence of changing colors from a dropdown list. The list should be populated
+                    on page load via API call to a service written in Python. 
+                </div>
+            </a>
+        </div>
+        <div class="col-6">
+            <a class="card col-8 offset-2  text-decoration-none" href="/challenge2/">
+                <div class="btn-primary card-header bg-primary">Challenge 2</div>
+                <div class="card-body text-secondary">
+                    An ant is sitting on a grid of white and black squares.  Initially the grid is all white and the ant faces right.
+                    <br><br>
+                    At each step it does the following: 
+                    <br><br>
+                    At a white square, flip the color of the square, turn 90 degrees right (clockwise), and move forward one unit. 
+                    <br><br>
+                    At
+                    a black square, flip the color of the square, turn 90 degrees left (counterclockwise), and move forward one unit. 
+                    <br><br>
+                    Write a program in Python to simulate the first K moves that the ant makes and display the grid at each move on an interface.  The
+                    only input to the method is the number of moves K.
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
