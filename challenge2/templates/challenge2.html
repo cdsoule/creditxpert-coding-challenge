@@ -34,7 +34,7 @@
 
 {% block content %}
 <div class="row col-2 offset-5 mt-5 position-absolute">
-    <form class="form-inline" action="/challenge2/" method="POST">{% csrf_token %}
+    <form class="form-inline" onsubmit="submitMoves(event)">
         <div class="input-group">
             <input name="k" id="k" class="form-control" type="text" placeholder="# of moves">
             <button class="btn btn-primary" type="submit" onsubmit="">Submit</button>
@@ -46,8 +46,9 @@
 </div>
 
 <script>
-    const data = JSON.parse("{{ data | escapejs }}");
-    console.log(data)
+    let data = JSON.parse('{{ data | escapejs }}');
+    const csrftoken = '{{ csrf_token }}';
 </script>
+<script src="{% static 'challenge2.services.js' %}"></script>
 <script src="{% static 'challenge2.js' %}"></script>
 {% endblock %}

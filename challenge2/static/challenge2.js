@@ -1,5 +1,17 @@
 const gridContainer = document.getElementById('grid-container')
 
+async function submitMoves(event) {
+    event.preventDefault()
+    k = document.getElementById("k").value
+    try {
+        data = await postMoves(k)
+        data = JSON.parse(data.data)
+        visualizeMovement()
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 function renderGrid(currow, curcol, matrix) {
     gridContainer.innerHTML = ''
     matrix.forEach((row, i) => {
@@ -20,6 +32,7 @@ function renderGrid(currow, curcol, matrix) {
 }
 
 function visualizeMovement() {
+    console.log(data)
     for (let i = 0; i < data.length; i++) {
         let currow = data[i].row
         let curcol = data[i].col

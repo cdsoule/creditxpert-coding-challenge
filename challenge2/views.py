@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from rest_framework.views import APIView
 import json
 import copy
@@ -21,11 +22,14 @@ class AntMoverView(APIView):
         return render(request, 'challenge2.html', {"data": context})
 
     def post(self, request):
-        k = int(request.data['k'])
+        try:
+            k = int(request.data['k'])
+        except ValueError:
+            return JsonResponse({"message": "Must submit an integer"}, status=400)
 
         data = json.dumps(self._ant_movement(k))
 
-        return render(request, 'challenge2.html', {"data": data})
+        return JsonResponse({"data": data})
         
     def _ant_movement(self, k):
         matrix = self.matrix[:]
