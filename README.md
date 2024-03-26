@@ -28,6 +28,14 @@ Optional:
 - `$ python manage.py createsuperuser`
 - This allows you to add new shapes and color schemes through the admin page. Adding shapes and color schemes can also be done through the POST method
 
+## Populate database with initial data
+1. Open shell
+- `$ python manage.py shell`
+2. Run populate_db script
+- `>>> exec(open('populate_db.py').read())`
+3. Exit shell
+- `>>> exit()`
+
 ## Posting shapes and colors
 ### Shapes
 Endpoint:
