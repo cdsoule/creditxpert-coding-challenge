@@ -58,7 +58,7 @@ Payload body format:
 
 Example:
 ```
-fetch('/challenge1/shapes', {
+fetch('/challenge1/colors', {
     method: "POST",
     mode: "same-origin",
     headers: {
