@@ -6,19 +6,20 @@ import copy
 
 class AntMoverView(APIView):
     def __init__(self):
-        self.start_row = 0
-        self.start_col = 0
+        self.start_row = 3
+        self.start_col = 3
         self.matrix = [
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0]
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0]
         ]
     
     def get(self, request):
-        context = json.dumps([{"row": 0, "col": 0, "matrix": self.matrix}])
+        context = json.dumps([{"row": 3, "col": 3, "matrix": self.matrix}])
         return render(request, 'challenge2.html', {"data": context})
 
     def post(self, request):
